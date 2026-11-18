@@ -164,14 +164,3 @@ npm run build    # compila TypeScript y genera dist/
 npm run preview  # sirve la versión compilada
 npm run lint     # analiza el código
 ```
-
-## Notas de implementación
-
-- React 19 + TypeScript, creado con Vite (`react-ts`).
-- Se usa `fetch` nativo: sin axios ni librerías de estado.
-- Los componentes piden los datos en `useEffect` y manejan `loading` y `error`.
-- El token se guarda en `localStorage` y viaja en el header `Authorization`.
-- La contraseña del alta valida `minLength={4}` y el email usa `type="email"`.
-- `age` y `country_id` se envían como número con `Number(...)`.
-- El país es un `<select>` con las opciones escritas a mano (1 Argentina,
-  2 Brasil), porque la API no tiene endpoint de países.
