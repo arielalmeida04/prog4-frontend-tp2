@@ -59,6 +59,7 @@ Todos usan la contraseña `123`.
 tp2-React/
 ├── practica-bk-endpoints.pdf    Enunciado de la práctica
 ├── README.md                    Este archivo
+├── docs/capturas/               Capturas de pantalla de la aplicación
 └── app/                         Proyecto React + TypeScript (Vite)
     ├── .env                     URL del backend (VITE_API_URL)
     ├── .env.example             Plantilla del .env
@@ -109,34 +110,35 @@ tp2-React/
 8. **Probar sesión vencida**: en DevTools → Application → Local Storage, cambiar
    una letra del token y recargar. Vuelve al login con "Tu sesión venció".
 
-## Prácticas implementadas
+## Capturas
 
-| Práctica | Dónde está |
-| --- | --- |
-| 1. Detalle de usuario | `UserList.tsx` (`selectedId`) + `UserDetail.tsx` |
-| 2. "Cargando..." y errores | `UserList.tsx` (`loading`, `error`, `response.ok`) |
-| 3. Buscar por nombre | `UserList.tsx` (`encodeURIComponent`, Limpiar) |
-| 4. Roles en el saludo | `App.tsx` (`formatRoles`) |
-| 5. Alta de usuario | `UserForm.tsx` (`Number(...)`, `minLength={4}`) |
-| 6. Solo mayores | `UserList.tsx` (`onlyAdults` → `GET /user_mayores`) |
-| 7. Borrar usuario | `UserList.tsx` (`window.confirm`, `filter`, error 403) |
-| 8. Sesión vencida | `App.tsx` (`onUnauthorized` como prop) |
-| 9. Análisis | Ver abajo |
+**Inicio de sesión**
 
-## Práctica 9: cuántas veces se repite el código
+<img src="docs/capturas/01-login.png" width="720" alt="Pantalla de inicio de sesión" />
 
-| Patrón | Repeticiones |
-| --- | --- |
-| `import.meta.env.VITE_API_URL` | 8 |
-| ``Authorization: `Bearer ${token}` `` | 7 |
-| `if (!response.ok)` | 8 |
-| `useState` de `loading` + `error` | 4 pares (8 estados) |
+**Listado con saludo, roles y formulario de alta**
 
-El chequeo de 401 aparece 6 veces. Si el backend cambiara el header del token,
-habría que tocar esos 6 lugares y olvidarse de uno dejaría un pedido sin
-autenticar. La solución es centralizar todo en una función `request()` (el paso
-siguiente del apunte); acá se dejó repetido a propósito para poder hacer el
-conteo de esta práctica.
+<img src="docs/capturas/02-listado.png" width="900" alt="Listado de usuarios" />
+
+**Detalle de un usuario**
+
+<img src="docs/capturas/03-detalle.png" width="900" alt="Detalle del usuario" />
+
+**Búsqueda por nombre**
+
+<img src="docs/capturas/04-busqueda.png" width="900" alt="Búsqueda por nombre" />
+
+**Alta de usuario**
+
+<img src="docs/capturas/05-alta.png" width="900" alt="Alta de usuario" />
+
+**Solo mayores: el usuario de 16 años no aparece**
+
+<img src="docs/capturas/06-mayores.png" width="900" alt="Filtro de mayores de edad" />
+
+**Error 403 al intentar borrar con un usuario sin permiso**
+
+<img src="docs/capturas/07-permisos.png" width="900" alt="Error de permisos" />
 
 ## API que consume
 
